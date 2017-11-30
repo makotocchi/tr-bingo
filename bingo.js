@@ -1,6 +1,18 @@
 $(document).ready(function () {
 
-    initBingo();
+    // populates the dropdown
+    $.ajax({
+        dataType: "json",
+        url: "challenges.json",
+        mimeType: "application/json",
+        success: function (challenges) {
+            var bingoSelection = $('#bingoSelection');
+            $.each(challenges, function (key, value) {
+                bingoSelection.append($('<option />').val(value.name).text(value.name));
+            });
+            initBingo();
+        }
+    });
 
     // initializes the bingo with a new seed
     function initBingo() {
@@ -33,13 +45,23 @@ $(document).ready(function () {
         var seed = $('#seed').val();
         var engine = Random.engines.mt19937();
         engine.seed(seed);
-        var game = $('#gameSelection').val();
+        var bingoMode = $('#bingoSelection').val();
 
-        $.getJSON("challenges.json", function (challenges) {
-            var cards = Random.sample(engine, challenges[game], 25);
-            $('td').each(function (index) {
-                $(this).html(cards[index]);
-            });
+        $.ajax({
+            dataType: "json",
+            url: "challenges.json",
+            mimeType: "application/json",
+            success: function (challenges) {
+                $.each(challenges, function (key, value) {
+                    if (bingoMode == value.name) {
+                        var cards = Random.sample(engine, value.challenges, 25);
+                        $('td').each(function (index) {
+                            $(this).html(cards[index]);
+                        });
+                        return false;
+                    }
+                });
+            }
         });
     }
 
@@ -56,6 +78,7 @@ $(document).ready(function () {
         return false;
     }
 
+    // color cells when clicked and the board when you've won
     $('td').click(function () {
         $(this).toggleClass('selected');
         if (isBingo()) {
@@ -67,5 +90,5 @@ $(document).ready(function () {
 
     $('#newSeed').click(initBingo);
     $('#seed').change(resetBingo);
-    $('#gameSelection').change(resetBingo);
+    $('#bingoSelection').change(resetBingo);
 });
