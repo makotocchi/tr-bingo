@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Tomb Raider bingo for races</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/random-js/1.0.8/random.min.js"></script>
+    <script type="text/javascript" src="bingo.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+</head>
+
+<body>
+    <div id="bingo">
+        <button type="button" id="newSeed">New seed</button>
+        <select id="gameSelection">
+            <option value="tr1">Tomb Raider 1</option>
+            <option value="tr2">Tomb Raider 2</option>
+            <option value="tr3">Tomb Raider 3</option>
+            <option value="tr4">Tomb Raider 4</option>
+            <option value="tr5">Tomb Raider 5</option>
+        </select>
+        <input type="number" id="seed">
+        <table>
+            <tr>
+                <td class="row1 col1 diag1" id="cell1"> nbsp;</td>
+                <td class="row1 col2" id="cell2"> nbsp;</td>
+                <td class="row1 col3" id="cell3"> nbsp;</td>
+                <td class="row1 col4" id="cell4"> nbsp;</td>
+                <td class="row1 col5 diag2" id="cell5"> nbsp;</td>
+            </tr>
+            <tr>
+                <td class="row2 col1" id="cell6"> nbsp;</td>
+                <td class="row2 col2 diag1" id="cell7"> nbsp;</td>
+                <td class="row2 col3" id="cell8"> nbsp;</td>
+                <td class="row2 col4 diag2" id="cell9"> nbsp;</td>
+                <td class="row2 col5" id="cell10"> nbsp;</td>
+            </tr>
+            <tr>
+                <td class="row3 col1" id="cell11"> nbsp;</td>
+                <td class="row3 col2" id="cell12"> nbsp;</td>
+                <td class="row3 col3 diag1 diag2" id="cell13"> nbsp;</td>
+                <td class="row3 col4" id="cell14"> nbsp;</td>
+                <td class="row3 col5" id="cell15"> nbsp;</td>
+            </tr>
+            <tr>
+                <td class="row4 col1" id="cell16"> nbsp;</td>
+                <td class="row4 col2 diag2" id="cell17"> nbsp;</td>
+                <td class="row4 col3" id="cell18"> nbsp;</td>
+                <td class="row4 col4 diag1" id="cell19"> nbsp;</td>
+                <td class="row4 col5" id="cell20"> nbsp;</td>
+            </tr>
+            <tr>
+                <td class="row5 col1 diag2" id="cell21"> nbsp;</td>
+                <td class="row5 col2" id="cell22"> nbsp;</td>
+                <td class="row5 col3" id="cell23"> nbsp;</td>
+                <td class="row5 col4" id="cell24"> nbsp;</td>
+                <td class="row5 col5 diag1" id="cell25"> nbsp;</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>
